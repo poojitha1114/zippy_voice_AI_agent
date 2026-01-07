@@ -1,67 +1,35 @@
-
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
-
-
-
-
-🎤 Zippy – Voice AI Product Assistant
+# 🎤 Zippy – Voice AI Product Assistant
 
 Zippy is a browser-based Voice AI assistant built with React + TypeScript that demonstrates end-to-end integration of voice input, LLM processing, and voice output.
 The project focuses on Voice AI integration and flow clarity, rather than UI polish or production hardening.
 
-🧠 Architecture and Flow
+## 🧠 Architecture and Flow
 
 The application follows a real-time Voice AI pipeline using browser audio capture and a live LLM connection.
 
-High-level Flow
+#### High-level Flow
 
-Voice Input (Microphone)
+- Voice Input (Microphone)
+  - The browser captures raw microphone audio using the Web Audio API.
+  - Audio is processed as PCM data in the frontend.
 
-The browser captures raw microphone audio using the Web Audio API.
+- Audio Processing
+  - Audio utilities (utils/audio.ts) handle:
+    - Audio buffering
+    - PCM conversion
+    - Preparing audio frames for streaming
 
-Audio is processed as PCM data in the frontend.
+- LLM Interaction
+  - Processed audio is streamed to a live LLM endpoint.
+  - The LLM performs speech understanding and response generation.
 
-Audio Processing
+- Response Handling
+  - Model responses are received in real time.
+  - Conversation messages are displayed in the UI.
+  - Audio responses are played back to the user.
 
-Audio utilities (utils/audio.ts) handle:
 
-Audio buffering
-
-PCM conversion
-
-Preparing audio frames for streaming
-
-LLM Interaction
-
-Processed audio is streamed to a live LLM endpoint.
-
-The LLM performs speech understanding and response generation.
-
-Response Handling
-
-Model responses are received in real time.
-
-Conversation messages are displayed in the UI.
-
-Audio responses are played back to the user.
-
-UI & Visualization
-
-A visualizer shows audio activity.
-
-A conversation log displays user and assistant turns.
-
-Conceptual Flow Diagram
+### Conceptual Flow Diagram
 Microphone Input
    ↓
 Web Audio API
@@ -144,4 +112,22 @@ Open the app
 Navigate to the local URL shown in the terminal (usually http://localhost:5173)
 
 Allow microphone access
-Start speaking to interact with the assistant
+Start speaking to interact with the assistant          
+
+
+
+
+
+
+## Run Locally
+
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
+
+
